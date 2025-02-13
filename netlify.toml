@@ -1,0 +1,15 @@
+[build]
+  publish = "/"  # Set this to the directory where index.html exists
+  command = ""  # Leave blank if no build step
+
+# Redirect Rules
+[[redirects]]
+  from = "/admin/*"
+  to = "/admin/index.html"
+  status = 200
+
+[[headers]]
+  for = "/admin/config.yml"
+  [headers.values]
+    Access-Control-Allow-Origin = "*"
+    Content-Type = "text/yaml"
