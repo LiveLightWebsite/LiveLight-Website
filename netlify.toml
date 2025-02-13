@@ -1,8 +1,0 @@
-[build]
-  publish = "/"
-  command = ""
-
-[dev]
-  command = ""
-  framework = "html"
-  targetPort = 8888
