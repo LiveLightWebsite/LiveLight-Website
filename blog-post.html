@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Post</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: white;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .container {
+            width: 80%;
+            max-width: 800px;
+            background: #1e1e1e;
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        h1 {
+            margin-bottom: 10px;
+        }
+
+        .content {
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        .back-button {
+            margin-top: 20px;
+            padding: 10px 15px;
+            background: #333;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .back-button:hover {
+            background: #444;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 id="post-title">Loading...</h1>
+        <p id="post-date"></p>
+        <div class="content" id="post-content">Loading content...</div>
+        <button class="back-button" onclick="goBack()">Back to Blog</button>
+    </div>
+
+    <script>
+        // Mock blog posts data
+        const posts = {
+            "1": { title: "First Blog Post", date: "February 12, 2025", content: "This is the content of the first blog post." },
+            "2": { title: "Second Blog Post", date: "February 13, 2025", content: "This is the content of the second blog post." },
+            "3": { title: "Third Blog Post", date: "February 14, 2025", content: "This is the content of the third blog post." }
+        };
+
+        // Get post ID from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const postId = urlParams.get("id");
+
+        // Load post content
+        if (postId && posts[postId]) {
+            document.getElementById("post-title").textContent = posts[postId].title;
+            document.getElementById("post-date").textContent = posts[postId].date;
+            document.getElementById("post-content").textContent = posts[postId].content;
+        } else {
+            document.getElementById("post-title").textContent = "Post Not Found";
+            document.getElementById("post-content").textContent = "Sorry, this blog post does not exist.";
+        }
+
+        // Back button function
+        function goBack() {
+            window.location.href = "blog.html";
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: white;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            position: relative;
+        }
+
+        #logo {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            max-width: 150px;
+            opacity: 0;
+            animation: fadeInLogo 1s ease-in-out forwards;
+        }
+
+        .nav-bar {
+            position: absolute;
+            top: 20px;
+            left: 25%; /* Shifted more left to compensate for Blog tab */
+            transform: translateX(-50%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            opacity: 0;
+            animation: fadeInNav 1s ease-in-out forwards;
+            animation-delay: 0.5s;
+            padding-bottom: 5px;
+            border-bottom: 2px solid white;
+            width: max-content;
+            white-space: nowrap;
+        }
+
+        .nav-item {
+            font-size: 1.2rem;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            width: 100%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        @keyframes fadeInLogo {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInNav {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <img src="Logo2.png" alt="LiveLight Fit Logo" id="logo">
+    
+    <div class="nav-bar">
+        <span class="nav-item">Food Money Calculator</span>
+        <span class="nav-item">Home Fitness</span>
+        <span class="nav-item">Community Fitness</span>
+        <span class="nav-item">Subscriptions</span>
+        <span class="nav-item">Products</span>
+        <span class="nav-item" onclick="window.location.href='blog.html'">Blog</span>
+    </div>
+
+    <div class="content">
+        <h1>Welcome, Admin!</h1>
+        <p>This is your secret backend.</p>
+        <button onclick="logout()">Logout</button>
+    </div>
+
+    <script>
+        // Redirect if not logged in
+        if (localStorage.getItem("authenticated") !== "true") {
+            window.location.href = "index.html";
+        }
+
+        function logout() {
+            localStorage.removeItem("authenticated");
+            window.location.href = "index.html";
+        }
+    </script>
+</body>
+</html>

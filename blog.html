@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: white;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        .blog-container {
+            width: 80%;
+            max-width: 800px;
+        }
+
+        .blog-post {
+            background: #1e1e1e;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .blog-post:hover {
+            background: #292929;
+        }
+    </style>
+</head>
+<body>
+    <h1>Blog</h1>
+    <div class="blog-container" id="blog-container">
+        <!-- Blog posts will be dynamically added here -->
+    </div>
+
+    <script>
+        const posts = [
+            { title: "First Blog Post", url: "blog-post.html?id=1" },
+            { title: "Second Blog Post", url: "blog-post.html?id=2" },
+            { title: "Third Blog Post", url: "blog-post.html?id=3" }
+        ];
+
+        const container = document.getElementById("blog-container");
+        posts.forEach(post => {
+            const div = document.createElement("div");
+            div.className = "blog-post";
+            div.textContent = post.title;
+            div.onclick = () => window.location.href = post.url;
+            container.appendChild(div);
+        });
+    </script>
+</body>
+</html>
