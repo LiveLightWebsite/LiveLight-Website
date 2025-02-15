@@ -1,0 +1,30 @@
+﻿backend:
+  name: github
+  repo: LiveLightWebsite/LiveLight-Website  # Your GitHub repository
+  branch: main
+  auth_scope: repo
+
+publish_mode: editorial_workflow
+
+media_library:
+  name: "netlify-large-media"  # Uses Netlify’s built-in media library
+
+collections:
+  - name: "blog"
+    label: "Blog Posts"
+    folder: "blog"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime" }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "settings"
+    label: "Site Settings"
+    files:
+      - label: "General Settings"
+        name: "settings"
+        file: "settings.json"
+        fields:
+          - { label: "Site Title", name: "site_title", widget: "string" }
